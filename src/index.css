@@ -1,0 +1,124 @@
+* {
+
+  box-sizing: border-box;
+
+}
+
+html, body {
+
+  max-width: 100%;
+
+  overflow-x: hidden;
+
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+
+@layer base {
+  :root {
+    --background: 247 247 247;
+    --foreground: 15 23 42;
+
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+
+    --primary: 255 103 0; /* pumpkin */
+    --primary-foreground: 255 255 255;
+
+    --secondary: 235 235 235; /* anti-flash white */
+    --secondary-foreground: 15 23 42;
+
+    --muted: 192 192 192; /* silver */
+    --muted-foreground: 100 116 139;
+
+    --accent: 58 110 165; /* bice blue */
+    --accent-foreground: 255 255 255;
+
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+
+    --border: 200 200 200;
+    --input: 226 232 240;
+    --ring: 0 78 152; /* polynesian blue */
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 235 235 235;
+    --sidebar-foreground: 15 23 42;
+    --sidebar-primary: 255 103 0;
+    --sidebar-primary-foreground: 255 255 255;
+    --sidebar-accent: 192 192 192;
+    --sidebar-accent-foreground: 15 23 42;
+    --sidebar-border: 226 232 240;
+    --sidebar-ring: 0 78 152;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  .gradient-bg {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .hover-lift {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    @apply opacity-0 translate-y-8;
+    animation: fadeInUp 1s ease-out forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

@@ -1,0 +1,102 @@
+import { Batch } from '../types/batch';
+import { useEffect, useState } from 'react';
+
+export const mockBatches: Batch[] = [
+//   {
+//     id: '1',
+//     title: 'Forex Trading Fundamentals',
+//     description: 'Learn the basics of forex trading, including currency pairs, market analysis, and risk management strategies.',
+//     instructor: 'John Smith',
+//     duration: '8 weeks',
+//     level: 'Beginner',
+//     price: 299,
+//     image: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&h=300&fit=crop',
+//     startDate: '2024-07-01',
+//     endDate: '2024-08-26',
+//     maxStudents: 50,
+//     enrolledStudents: 32,
+//     status: 'Active',
+//     features: ['Live Trading Sessions', 'Market Analysis Tools', '24/7 Support', 'Certificate of Completion']
+//   },
+//   {
+//     id: '2',
+//     title: 'Advanced Technical Analysis',
+//     description: 'Master advanced chart patterns, indicators, and trading strategies used by professional traders.',
+//     instructor: 'Sarah Johnson',
+//     duration: '12 weeks',
+//     level: 'Advanced',
+//     price: 599,
+//     image: 'https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=500&h=300&fit=crop',
+//     startDate: '2024-07-15',
+//     endDate: '2024-10-07',
+//     maxStudents: 30,
+//     enrolledStudents: 25,
+//     status: 'Active',
+//     features: ['Advanced Charting', 'Strategy Development', 'One-on-One Mentoring', 'Trading Psychology']
+//   },
+//   {
+//     id: '3',
+//     title: 'Cryptocurrency Trading Bootcamp',
+//     description: 'Comprehensive guide to cryptocurrency markets, DeFi protocols, and digital asset trading strategies.',
+//     instructor: 'Mike Chen',
+//     duration: '6 weeks',
+//     level: 'Intermediate',
+//     price: 399,
+//     image: 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?w=500&h=300&fit=crop',
+//     startDate: '2024-08-01',
+//     endDate: '2024-09-12',
+//     maxStudents: 40,
+//     enrolledStudents: 15,
+//     status: 'Upcoming',
+//     features: ['DeFi Strategies', 'NFT Trading', 'Portfolio Management', 'Risk Assessment']
+//   },
+//   {
+//     id: '4',
+//     title: 'Stock Market Investment Strategy',
+//     description: 'Learn value investing, growth strategies, and fundamental analysis for long-term wealth building.',
+//     instructor: 'Emily Davis',
+//     duration: '10 weeks',
+//     level: 'Beginner',
+//     price: 349,
+//     image: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=500&h=300&fit=crop',
+//     startDate: '2024-09-01',
+//     endDate: '2024-11-10',
+//     maxStudents: 60,
+//     enrolledStudents: 8,
+//     status: 'Upcoming',
+//     features: ['Portfolio Building', 'Fundamental Analysis', 'Market Research', 'Investment Planning']
+//   },
+//   {
+//     id: '5',
+//     title: 'Risk Management Masterclass',
+//     description: 'Essential risk management techniques and position sizing strategies for consistent profitability.',
+//     instructor: 'Robert Wilson',
+//     duration: '4 weeks',
+//     level: 'Intermediate',
+//     price: 199,
+//     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop',
+//     startDate: '2024-07-20',
+//     endDate: '2024-08-17',
+//     maxStudents: 35,
+//     enrolledStudents: 28,
+//     status: 'Active',
+//     features: ['Position Sizing', 'Stop Loss Strategies', 'Psychology of Risk', 'Portfolio Protection']
+//   },
+//   {
+//     id: '6',
+//     title: 'Algorithmic Trading with Python',
+//     description: 'Build automated trading systems using Python, APIs, and machine learning algorithms.',
+//     instructor: 'Alex Kumar',
+//     duration: '14 weeks',
+//     level: 'Advanced',
+//     price: 799,
+//     image: 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0?w=500&h=300&fit=crop',
+//     startDate: '2024-08-15',
+//     endDate: '2024-11-21',
+//     maxStudents: 25,
+//     enrolledStudents: 12,
+//     status: 'Upcoming',
+//     features: ['Python Programming', 'API Integration', 'Backtesting', 'Machine Learning']
+//   }
+// ];
+];
