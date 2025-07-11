@@ -48,15 +48,20 @@ const Navbar = () => {
     <nav className="bg-[#fdfbf7] backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2 group">
-            <div className="p-2 bg-primary-600 rounded-lg group-hover:scale-105 transition-transform">
-              <TrendingUp className="h-6 w-6 text-white" />
-            </div>
-            <span className="text-xl font-bold text-gray-900">FxStreampro</span>
-          </Link>
+          {/* Logo  */}
+<Link to="/" className="flex items-center space-x-3 group">
+  <div className="w-14 h-14 p-1 bg-slate-900 rounded-lg group-hover:scale-105 transition-transform overflow-hidden">
+    <img
+      src="/FXLOGO.png"
+      alt="Logo"
+      className="object-contain w-full h-full"
+    />
+  </div>
+  <span className="text-2xl font-bold text-gray-900">FxStreampro</span>
+</Link>
 
-          {/* Desktop Navigation */}
+
+           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a
