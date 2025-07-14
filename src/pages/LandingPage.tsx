@@ -231,21 +231,21 @@ const LandingPage = () => {
         {[
           {
             mode: "Online",
-            date: "21 June",
+            date: "21 july",
             time: "Hindi | 6:00 PM – 9:00 PM IST",
-            link: "https://forms.gle/example1",
+            link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
           },
           {
             mode: "Offline",
-            date: "22 June",
+            date: "21 July",
             time: "Hindi | 11:00 AM – 1:00 PM IST",
-            link: "https://forms.gle/example2",
+            link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
           },
           {
             mode: "Offline",
-            date: "28 June",
+            date: "21 July",
             time: "Marathi | 11:00 AM – 1:00 PM IST",
-            link: "https://forms.gle/example3",
+            link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
           },
         ].map((batch, i) => (
           <tr key={i} className="hover:bg-gray-50 transition">
@@ -283,21 +283,21 @@ const LandingPage = () => {
     {[
       {
         mode: "Online",
-        date: "21 June",
+        date: "21 July",
         time: "Hindi | 6:00 PM – 9:00 PM IST",
-        link: "https://forms.gle/example1",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
       },
       {
         mode: "Offline",
-        date: "22 June",
+        date: "21 July",
         time: "Hindi | 11:00 AM – 1:00 PM IST",
-        link: "https://forms.gle/example2",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
       },
       {
         mode: "Offline",
-        date: "28 June",
+        date: "21 July",
         time: "Marathi | 11:00 AM – 1:00 PM IST",
-        link: "https://forms.gle/example3",
+        link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
       },
     ].map((batch, i) => (
       <div key={i} className="p-4">
