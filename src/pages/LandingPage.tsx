@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Award, TrendingUp, Shield, Clock, Target, CheckCircle, Mail, Phone, MapPin, Calendar, Globe, ExternalLink, Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
+import ImageSlider from "../components/ImageSlider";
 import { FaTelegramPlane , FaWhatsapp } from "react-icons/fa";
 import CountUp from 'react-countup';
 import StatsSection from '@/components/StatsSection';
@@ -388,7 +389,7 @@ const LandingPage = () => {
     </h2>
 
     {/* 🔹 Concept Cards */}
-    <div className="grid md:grid-cols-2 gap-12">
+    <div className="grid md:grid-cols-2 gap-12 mb-10">
       {/* SMC */}
       <div className="bg-gray-100 p-6 rounded-xl border border-gray-300 shadow-md">
         <h3 className="text-2xl font-bold text-[#1d3557] mb-4">Smart Money Concept (SMC)</h3>
@@ -426,6 +427,8 @@ const LandingPage = () => {
         </ul>
       </div>
     </div>
+
+    <ImageSlider />
 
     {/* 🔹 Comparison Table */}
     <div className="mt-16 overflow-x-auto max-w-full">
@@ -719,6 +722,11 @@ const LandingPage = () => {
           name: 'Pu Prime',
           url: 'https://www.puprime.partners/forex-trading-account/?affid=60771',
           logo: '/pu_prime.png'
+        },
+        {
+          name: 'Star Trader',
+          url: 'https://www.startrader.com/live-account/?affid=NzQ1MTM0Mw==&ibpRebateCode=NzQ1MTM0M1NUMTAwMTM=',
+          logo: '/logo1.jpg'
         }
       ].map((broker, index) => (
         <a
@@ -853,7 +861,7 @@ const LandingPage = () => {
                   </div>
                   <div>
                     <div className="font-semibold">Email</div>
-                    <div className="text-gray-300">info@fxstreampro.com</div>
+                    <div className="text-gray-300">ajayfxstream@gmail.com</div>
                   </div>
                 </div>
                 
@@ -863,7 +871,7 @@ const LandingPage = () => {
                   </div>
                   <div>
                     <div className="font-semibold">Phone</div>
-                    <div className="text-gray-300">+1 (555) 123-4567</div>
+                    <div className="text-gray-300">+91 9226722460</div>
                   </div>
                 </div>
                 
@@ -873,7 +881,7 @@ const LandingPage = () => {
                   </div>
                   <div>
                     <div className="font-semibold">Address</div>
-                    <div className="text-gray-300">New York, NY 10001</div>
+                    <div className="text-gray-300">Kolhapur, Pune, Maharashtra</div>
                   </div>
                 </div>
               </div>
@@ -890,14 +898,7 @@ const LandingPage = () => {
                   >
                     <Facebook className="h-6 w-6" />
                   </a>
-                  <a
-                    href="https://t.me/+w2_xVAHPQ005MmQ1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors"
-                  >
-                    <Twitter className="h-6 w-6" />
-                  </a>
+                  
                   <a
                     href="https://instagram.com/fxstreampro"
                     target="_blank"
@@ -914,16 +915,16 @@ const LandingPage = () => {
                   >
                     <Youtube className="h-6 w-6" />
                   </a>
+                 
+
                   <a
-                    href="https://linkedin.com/company/fxstreampro"
+                    href="https://t.me/+w2_xVAHPQ005MmQ1"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-12 h-12 bg-blue-700 rounded-lg flex items-center justify-center hover:bg-blue-800 transition-colors"
+                    className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center hover:bg-blue-600 transition-colors"
                   >
-                    <Linkedin className="h-6 w-6" />
+                    <FaTelegramPlane className="h-6 w-6 text-white" />
                   </a>
-
-                  <FaTelegramPlane />
 
                 </div>
               </div>

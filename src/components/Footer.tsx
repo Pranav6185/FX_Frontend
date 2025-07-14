@@ -24,12 +24,6 @@ const Footer = () => {
                 <Facebook className="h-5 w-5" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
             </div>
@@ -42,8 +36,8 @@ const Footer = () => {
               <li><Link to="/" className="text-gray-400 hover:text-white transition-colors">Home</Link></li>
               <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
               <li><a href="#features" className="text-gray-400 hover:text-white transition-colors">Features</a></li>
-              <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors">Login</Link></li>
-              <li><Link to="/signup" className="text-gray-400 hover:text-white transition-colors">Sign Up</Link></li>
+              {/* <li><Link to="/login" className="text-gray-400 hover:text-white transition-colors">Login</Link></li>
+              <li><Link to="/signup" className="text-gray-400 hover:text-white transition-colors">Sign Up</Link></li> */}
             </ul>
           </div>
 
@@ -65,15 +59,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-primary-400" />
-                <span className="text-gray-400 text-sm">info@fxstreampro.com</span>
+                <span className="text-gray-400 text-sm">ajayfxstream@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-primary-400" />
-                <span className="text-gray-400 text-sm">+1 (555) 123-4567</span>
+                <span className="text-gray-400 text-sm">+91 9226722460</span>
               </div>
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-primary-400" />
-                <span className="text-gray-400 text-sm">New York, NY 10001</span>
+                <span className="text-gray-400 text-sm">Kolhapur, Pune, Maharashtra.</span>
               </div>
             </div>
           </div>
