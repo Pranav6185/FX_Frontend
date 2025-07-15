@@ -284,7 +284,7 @@ const LandingPage = () => {
       {
         mode: "Online",
         date: "21 July",
-        time: "Hindi | 6:00 PM – 9:00 PM IST",
+        time: "Hindi | 9:00 PM – 10:00 PM IST",
         link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
       },
       {
@@ -790,21 +790,21 @@ const LandingPage = () => {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {[
         {
-          name: 'Alex Thompson',
+          name: 'Pranav Suryavanshi',
           role: 'Day Trader',
           content:
             'FxStreampro transformed my trading completely. The risk management techniques alone have saved me thousands.',
           rating: 5
         },
         {
-          name: 'Maria Rodriguez',
+          name: 'Ruturaj Mahekar',
           role: 'Investment Consultant',
           content:
             'The comprehensive curriculum and expert instructors make this the best trading education platform available.',
           rating: 5
         },
         {
-          name: 'David Kim',
+          name: 'Sanket Natekar',
           role: 'Portfolio Manager',
           content:
             'I went from losing money to consistent profitability in just 6 months. Highly recommended!',
