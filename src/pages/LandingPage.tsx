@@ -231,19 +231,19 @@ const LandingPage = () => {
         {[
           {
             mode: "Online",
-            date: "21 july",
+            date: "1 August",
             time: "Hindi | 6:00 PM – 9:00 PM IST",
             link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
           },
           {
             mode: "Offline",
-            date: "21 July",
+            date: "1 August",
             time: "Hindi | 11:00 AM – 1:00 PM IST",
             link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
           },
           {
             mode: "Offline",
-            date: "21 July",
+            date: "1 August",
             time: "Marathi | 11:00 AM – 1:00 PM IST",
             link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
           },
