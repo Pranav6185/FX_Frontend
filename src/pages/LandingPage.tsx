@@ -182,7 +182,7 @@ const LandingPage = () => {
 
 
       {/* Batches Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+   <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -194,181 +194,169 @@ const LandingPage = () => {
     </div>
 
     <div className="flex flex-col lg:flex-row gap-12 items-start">
-      {/* Left Side Image */}
-      {/* <div className="group aspect-video rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_8px_40px_rgba(22,105,122,0.25)] transition-shadow duration-500">
-        <iframe
-          className="w-full h-full"
-          src="https://www.youtube.com/embed/90krrETzzf4"
-          title="FxStreampro Video 1"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></iframe>
-      </div> */}
-      {/* <div className="w-full lg:w-1/2">
-        <img
-          src="/i.jpg"
-          alt="Trading Illustration"
-          className="w-full h-auto rounded-lg shadow-md"
-        />
-      </div> */}
-
       {/* Right Side Table-Style Batches */}
-      <div className="w-full  bg-white rounded-2xl shadow-md overflow-hidden">
-        <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden">
-  {/* Table layout for md+ screens */}
-  <div className="hidden md:block overflow-x-auto">
-    <table className="min-w-full text-lg text-left table-auto">
-      <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
-        <tr>
-          <th className="px-5 py-4">Mode</th>
-          <th className="px-5 py-4">Date</th>
-          <th className="px-5 py-4">Language / Time</th>
-          <th className="px-5 py-4 text-right"></th>
-        </tr>
-      </thead>
-      <tbody className="divide-y divide-gray-200 text-gray-700">
-        {[
-          {
-            mode: "Online",
-            date: "1 August",
-            time: "Hindi | 6:00 PM – 9:00 PM IST",
-            link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-          },
-          {
-            mode: "Offline",
-            date: "1 August",
-            time: "Hindi | 11:00 AM – 1:00 PM IST",
-            link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-          },
-          {
-            mode: "Offline",
-            date: "1 August",
-            time: "Marathi | 11:00 AM – 1:00 PM IST",
-            link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-          },
-        ].map((batch, i) => (
-          <tr key={i} className="hover:bg-gray-50 transition">
-            <td className="px-5 py-5">
-              <span
-                className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                  batch.mode === "Online"
-                    ? "bg-green-100 text-green-600"
-                    : "bg-yellow-100 text-yellow-700"
-                }`}
-              >
-                {batch.mode}
-              </span>
-            </td>
-            <td className="px-5 py-5 font-medium">{batch.date}</td>
-            <td className="px-5 py-5">{batch.time}</td>
-            <td className="px-5 py-5 text-right">
-              <a
-                href={batch.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition whitespace-nowrap"
-              >
-                Register Now
-              </a>
-            </td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-
-  {/* Card layout for small screens */}
-  <div className="block md:hidden divide-y divide-gray-200">
-    {[
-      {
-        mode: "Online",
-        date: "21 August",
-        time: "Hindi | 9:00 PM – 10:00 PM IST",
-        link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-      },
-      {
-        mode: "Offline",
-        date: "21 August",
-        time: "Hindi | 11:00 AM – 1:00 PM IST",
-        link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-      },
-      {
-        mode: "Offline",
-        date: "21 August",
-        time: "Marathi | 11:00 AM – 1:00 PM IST",
-        link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-      },
-    ].map((batch, i) => (
-      <div key={i} className="p-4">
-        {/* Mode badge */}
-        <div className="mb-2">
-          <span
-            className={`text-xs font-semibold px-3 py-1 rounded-full ${
-              batch.mode === "Online"
-                ? "bg-green-100 text-green-600"
-                : "bg-yellow-100 text-yellow-700"
-            }`}
-          >
-            {batch.mode}
-          </span>
-        </div>
-
-        {/* Date and time info */}
-        <p className="text-sm text-gray-800 font-medium mb-1">
-          Date: <span className="font-normal">{batch.date}</span>
-        </p>
-        <p className="text-sm text-gray-800 mb-4">
-          Time: <span className="font-normal">{batch.time}</span>
-        </p>
-
-        {/* Button at the bottom */}
-        <div>
-          <a
-            href={batch.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition w-full block text-center"
-          >
-            Register Now
-          </a>
-        </div>
-      </div>
-    ))}
-  </div>
+      <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden relative">
+<div className="absolute top-2 left-2 sm:-left-12 w-36 sm:w-48 rotate-0 sm:-rotate-45 mt-0 sm:mt-8 bg-red-600 text-white text-center text-[10px] sm:text-xs font-bold py-1 shadow-lg z-20">
+  REGISTER NOW
 </div>
 
 
-        {/* 🎥 Recorded Lectures Button */}
-                  <div className="relative bg-gray-50 border-t border-gray-200 py-6 px-6 flex flex-col-reverse md:flex-row md:justify-end md:items-center gap-4 md:gap-0">
-                        {/* Centered description with animated 👉 */}
-                        <div className="text-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
-                          <p className="text-gray-800 font-semibold text-lg flex items-center justify-center gap-2">
-                            Access all recorded lectures
-                            <span className="text-2xl animate-wiggle hidden md:inline">👉</span>
-                          </p>
-                          <p className="text-sm text-gray-600">
-                            Click the button to view them on Rigi.
-                          </p>
-                        </div>
-
-                        {/* Right-aligned button */}
-                        <a
-                          href="https://rpy.club/courses/tT7xYAdJD2"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="bg-gradient-to-r from-orange-500 via-pink-500 to-red-500 text-white px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:from-red-500 hover:to-orange-500 hover:scale-105 transition-all duration-300 self-center md:self-auto"
-                        >
-                          View Recorded Lectures
-                        </a>
-                      </div>
 
 
 
+
+
+        <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden">
+          {/* Table layout for md+ screens */}
+          <div className="hidden md:block overflow-x-auto">
+            <table className="min-w-full text-lg text-left table-auto">
+              <thead className="bg-gray-100 text-gray-700 uppercase text-xs">
+                <tr>
+                  <th className="px-5 py-4">Mode</th>
+                  <th className="px-5 py-4">Date</th>
+                  <th className="px-5 py-4">Language / Time</th>
+                  <th className="px-5 py-4 text-right"></th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-200 text-gray-700">
+                {[
+                  {
+                    mode: "Online",
+                    date: "1 August",
+                    time: "Hindi | 6:00 PM – 9:00 PM IST",
+                    link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
+                  },
+                  {
+                    mode: "Offline",
+                    date: "1 August",
+                    time: "Hindi | 11:00 AM – 1:00 PM IST",
+                    link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
+                  },
+                  {
+                    mode: "Offline",
+                    date: "1 August",
+                    time: "Marathi | 11:00 AM – 1:00 PM IST",
+                    link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
+                  },
+                ].map((batch, i) => (
+                  <tr key={i} className="hover:bg-gray-50 transition">
+                    <td className="px-5 py-5">
+                      <span
+                        className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                          batch.mode === "Online"
+                            ? "bg-green-100 text-green-600"
+                            : "bg-yellow-100 text-yellow-700"
+                        }`}
+                      >
+                        {batch.mode}
+                      </span>
+                    </td>
+                    <td className="px-5 py-5 font-medium">{batch.date}</td>
+                    <td className="px-5 py-5">{batch.time}</td>
+                    <td className="px-5 py-5 text-right">
+                      <a
+                        href={batch.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition whitespace-nowrap"
+                      >
+                        Register Now
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Card layout for small screens */}
+          <div className="block md:hidden divide-y divide-gray-200">
+            {[
+              {
+                mode: "Online",
+                date: "1 August",
+                time: "Hindi | 9:00 PM – 10:00 PM IST",
+                link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
+              },
+              {
+                mode: "Offline",
+                date: "1 August",
+                time: "Hindi | 11:00 AM – 1:00 PM IST",
+                link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
+              },
+              {
+                mode: "Offline",
+                date: "1 August",
+                time: "Marathi | 11:00 AM – 1:00 PM IST",
+                link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
+              },
+            ].map((batch, i) => (
+              <div key={i} className="p-4 relative border rounded-lg shadow-sm bg-white overflow-hidden">
+                
+
+                {/* Mode badge */}
+                <div className="mb-2 mt-4">
+                  <span
+                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                      batch.mode === "Online"
+                        ? "bg-green-100 text-green-600"
+                        : "bg-yellow-100 text-yellow-700"
+                    }`}
+                  >
+                    {batch.mode}
+                  </span>
+                </div>
+
+                {/* Date and time info */}
+                <p className="text-sm text-gray-800 font-medium mb-1">
+                  Date: <span className="font-normal">{batch.date}</span>
+                </p>
+                <p className="text-sm text-gray-800 mb-4">
+                  Time: <span className="font-normal">{batch.time}</span>
+                </p>
+
+                {/* Register Button */}
+                <div>
+                  <a
+                    href={batch.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition w-full block text-center"
+                  >
+                    Register Now
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 🎥 Recorded Lectures CTA */}
+        <div className="relative bg-gray-50 border-t border-gray-200 py-6 px-6 flex flex-col-reverse md:flex-row md:justify-end md:items-center gap-4 md:gap-0">
+          <div className="text-center md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+            <p className="text-gray-800 font-semibold text-lg flex items-center justify-center gap-2">
+              Access all recorded lectures
+              <span className="text-2xl animate-wiggle hidden md:inline">👉</span>
+            </p>
+            <p className="text-sm text-gray-600">
+              Click the button to view them on Rigi.
+            </p>
+          </div>
+
+          <a
+            href="https://rpy.club/courses/tT7xYAdJD2"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-gradient-to-r from-orange-500 via-pink-500 to-red-500 text-white px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:from-red-500 hover:to-orange-500 hover:scale-105 transition-all duration-300 self-center md:self-auto"
+          >
+            View Recorded Lectures
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
 
 
 
