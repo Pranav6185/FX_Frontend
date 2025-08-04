@@ -713,8 +713,8 @@ const LandingPage = () => {
         },
         {
           name: 'Star Trader',
-          url: 'https://www.startrader.com/live-account/?affid=NzQ1MTM0Mw==&ibpRebateCode=NzQ1MTM0M1NUMTAwMTM=',
-          logo: '/logo1.jpg'
+          url: 'https://www.delta.exchange/?code=DBQULC',
+          logo: '/Delta.jpg'
         }
       ].map((broker, index) => (
         <a
