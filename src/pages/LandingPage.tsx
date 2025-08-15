@@ -707,9 +707,9 @@ const LandingPage = () => {
           logo: '/exeness1.png'
         },
         {
-          name: 'Pu Prime',
-          url: 'https://www.puprime.partners/forex-trading-account/?affid=60771',
-          logo: '/pu_prime.png'
+          name: 'vantagemarkets',
+          url: 'https://www.vantagemarkets.com/en/open-live-account/?affid=NzI2OTI3Nw==',
+          logo: '/vantage.webp'
         },
         {
           name: 'Star Trader',
