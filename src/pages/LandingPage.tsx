@@ -222,19 +222,19 @@ const LandingPage = () => {
                 {[
                   {
                     mode: "Online",
-                    date: "September",
+                    date: "4 September",
                     time: "Hindi | 6:00 PM – 9:00 PM IST",
                     link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
                   },
                   {
                     mode: "Offline",
-                    date: "September",
+                    date: "4 September",
                     time: "Hindi | 11:00 AM – 1:00 PM IST",
                     link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
                   },
                   {
                     mode: "Offline",
-                    date: "September",
+                    date: "4 September",
                     time: "Marathi | 11:00 AM – 1:00 PM IST",
                     link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
                   },
