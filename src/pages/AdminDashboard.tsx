@@ -32,7 +32,7 @@ const AdminDashboard = () => {
     title: '',
     description: '',
     duration: '',
-    price: 0,
+    price: 15000,
     image: '',
     startDate: '',
     maxStudents: 50,

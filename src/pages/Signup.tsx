@@ -53,7 +53,7 @@ const Signup = () => {
     }
 
     try {
-      const registerRes = await fetch("http://localhost:4000/api/auth/register", {
+      const registerRes = await fetch("/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -70,7 +70,7 @@ const Signup = () => {
         return;
       }
 
-      const otpRes = await fetch("http://localhost:4000/api/auth/send-otp", {
+      const otpRes = await fetch("/auth/send-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -98,7 +98,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const verifyRes = await fetch("http://localhost:4000/api/auth/verify-otp", {
+      const verifyRes = await fetch("/auth/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: formData.email, otp })

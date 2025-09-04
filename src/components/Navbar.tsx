@@ -85,7 +85,7 @@ const Navbar = () => {
                   <User className="h-4 w-4" />
                   <span>{user.fullName}</span>
                 </Link>
-                {/* <Button
+                <Button
                   onClick={handleLogout}
                   variant="outline"
                   size="sm"
@@ -93,12 +93,12 @@ const Navbar = () => {
                 >
                   <LogOut className="h-4 w-4" />
                   <span>Logout</span>
-                </Button> */}
+                </Button>
               </div>
             ) : (
               <>
               <Link to="/login">
-                {/* <Button
+                <Button
                   className="bg-transparent border-2 border-[#ffb703] text-[#ffb703] 
                              hover:bg-[#ffb703] hover:text-white 
                              rounded-full px-6 py-2 font-semibold 
@@ -106,11 +106,11 @@ const Navbar = () => {
                              hover:scale-105 shadow-md"
                 >
                   Login
-                </Button> */}
+                </Button>
               </Link>
             
               <Link to="/signup">
-                {/* <Button
+                <Button
                   className="bg-[#16697a] text-white 
                              hover:bg-[#ffb703] hover:text-[#16697a] 
                              rounded-full px-6 py-2 font-semibold 
@@ -118,7 +118,7 @@ const Navbar = () => {
                              hover:scale-105 shadow-md ml-4"
                 >
                   Get Started
-                </Button> */}
+                </Button>
               </Link>
             </>
             
@@ -159,7 +159,7 @@ const Navbar = () => {
                   >
                     Dashboard
                   </Link>
-                  {/* <button
+                  <button
                     onClick={() => {
                       handleLogout();
                       setIsOpen(false);
@@ -167,7 +167,7 @@ const Navbar = () => {
                     className="block text-gray-600 hover:text-primary-600 transition-colors px-2 text-left"
                   >
                     Logout
-                  </button> */}
+                  </button>
                 </div>
               ) : (
                 <div className="border-t border-gray-200 pt-4 space-y-2">
