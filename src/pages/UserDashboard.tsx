@@ -70,11 +70,11 @@ const UserDashboard = () => {
                 Continue your trading education journey
               </p>
             </div>
-            <Link to="/">
+            {/* <Link to="/">
               <Button className="bg-blue-600 hover:bg-blue-700 text-white">
                 Home
               </Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
@@ -98,7 +98,7 @@ const UserDashboard = () => {
                     <img
                       src={batch.thumbnail}
                       alt={batch.batchName}
-                      className="w-full h-32 object-cover"
+                      className="w-full h-full object-cover"
                     />
                     <Badge className="absolute top-2 left-2 bg-green-500 text-white">
                       Enrolled
@@ -128,12 +128,12 @@ const UserDashboard = () => {
         {/* All Available Courses */}
         <div>
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-gray-900">
+            <h2 className="text-2xl font-bold text-yellow-50">
               All Available Courses
             </h2>
             <div className="flex items-center space-x-4">
               {/* Search */}
-              <div className="relative">
+              {/* <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
                 <input
                   type="text"
@@ -142,7 +142,7 @@ const UserDashboard = () => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10 pr-4 py-2 bg-white/80 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 />
-              </div>
+              </div> */}
               {/* Language Filter */}
               <select
                 value={selectedLevel}
@@ -152,7 +152,7 @@ const UserDashboard = () => {
                 <option value="all">All Languages</option>
                 <option value="English">English</option>
                 <option value="Hindi">Hindi</option>
-                <option value="Marathi">Marathi</option>
+                
               </select>
               {/* Mode Filter */}
               <select

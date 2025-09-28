@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Users, Award, TrendingUp, Shield, Clock, Target, CheckCircle, Mail, Phone, MapPin, Calendar, Globe, ExternalLink, Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react';
 import { Button } from '../components/ui/button';
@@ -7,11 +7,24 @@ import ImageSlider from "../components/ImageSlider";
 import { FaTelegramPlane , FaWhatsapp } from "react-icons/fa";
 import CountUp from 'react-countup';
 import StatsSection from '@/components/StatsSection';
-
+import axios from "axios";
 
 const LandingPage = () => {
   
   const rating=4.5;
+  const [batches, setBatches] = useState([]);
+  useEffect(() => {
+    const fetchBatches = async () => {
+      try {
+        const res = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/public-batches`);
+        const formatted = res.data.map((b) => ({ ...b, id: b._id }));
+        setBatches(formatted);
+      } catch (err) {
+        console.error("Error fetching batches:", err);
+      }
+    };
+    fetchBatches();
+  }, []);
   const galleryImages = [
     {
       id: 1,
@@ -182,7 +195,7 @@ const LandingPage = () => {
 
 
       {/* Batches Section */}
-   <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-12">
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -194,17 +207,11 @@ const LandingPage = () => {
     </div>
 
     <div className="flex flex-col lg:flex-row gap-12 items-start">
-      {/* Right Side Table-Style Batches */}
+      {/* Batches Table/Card */}
       <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden relative">
-<div className="absolute top-2 left-2 sm:-left-12 w-36 sm:w-48 rotate-0 sm:-rotate-45 mt-0 sm:mt-8 bg-red-600 text-white text-center text-[10px] sm:text-xs font-bold py-1 shadow-lg z-20">
-  REGISTER NOW
-</div>
-
-
-
-
-
-
+        <div className="absolute top-2 left-2 sm:-left-12 w-36 sm:w-48 rotate-0 sm:-rotate-45 mt-0 sm:mt-8 bg-red-600 text-white text-center text-[10px] sm:text-xs font-bold py-1 shadow-lg z-20">
+          REGISTER NOW
+        </div>
 
         <div className="w-full bg-white rounded-2xl shadow-md overflow-hidden">
           {/* Table layout for md+ screens */}
@@ -214,120 +221,103 @@ const LandingPage = () => {
                 <tr>
                   <th className="px-5 py-4">Mode</th>
                   <th className="px-5 py-4">Date</th>
-                  <th className="px-5 py-4">Language / Time</th>
+                  <th className="px-5 py-4">Description</th>
                   <th className="px-5 py-4 text-right"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 text-gray-700">
-                {[
-                  {
-                    mode: "Online",
-                    date: "4 September",
-                    time: "Hindi | 6:00 PM – 9:00 PM IST",
-                    link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-                  },
-                  {
-                    mode: "Offline",
-                    date: "4 September",
-                    time: "Hindi | 11:00 AM – 1:00 PM IST",
-                    link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-                  },
-                  {
-                    mode: "Offline",
-                    date: "4 September",
-                    time: "Marathi | 11:00 AM – 1:00 PM IST",
-                    link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-                  },
-                ].map((batch, i) => (
-                  <tr key={i} className="hover:bg-gray-50 transition">
-                    <td className="px-5 py-5">
-                      <span
-                        className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                          batch.mode === "Online"
-                            ? "bg-green-100 text-green-600"
-                            : "bg-yellow-100 text-yellow-700"
-                        }`}
-                      >
-                        {batch.mode}
-                      </span>
+                {batches.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="px-5 py-5 text-center text-gray-500">
+                      No batches available
                     </td>
-                    <td className="px-5 py-5 font-medium">{batch.date}</td>
-                    <td className="px-5 py-5">{batch.time}</td>
-                    <td className="px-5 py-5 text-right">
-                      <a
-                        href={batch.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                  </tr>
+                ) : (
+                  batches.map((batch, i) => (
+                    <tr key={batch._id || i} className="hover:bg-gray-50 transition">
+                      <td className="px-5 py-5">
+                        <span
+                          className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                            batch.mode === "Online"
+                              ? "bg-green-100 text-green-600"
+                              : "bg-yellow-100 text-yellow-700"
+                          }`}
+                        >
+                          {batch.mode}
+                        </span>
+                      </td>
+                      <td className="px-5 py-5 font-medium">
+                        {new Date(batch.startDate).toLocaleDateString()}
+                      </td>
+                      <td className="px-5 py-5">
+                         {batch.description}
+                      </td>
+                      <td className="px-5 py-5 text-right">
+                      <Link
+                        to="/login"
                         className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition whitespace-nowrap"
                       >
                         Register Now
-                      </a>
-                    </td>
-                  </tr>
-                ))}
+                      </Link>
+                      </td>
+                    </tr>
+                  ))
+                )}
               </tbody>
             </table>
           </div>
 
           {/* Card layout for small screens */}
           <div className="block md:hidden divide-y divide-gray-200">
-            {[
-              {
-                mode: "Online",
-                date: "1 August",
-                time: "Hindi | 9:00 PM – 10:00 PM IST",
-                link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-              },
-              {
-                mode: "Offline",
-                date: "1 August",
-                time: "Hindi | 11:00 AM – 1:00 PM IST",
-                link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-              },
-              {
-                mode: "Offline",
-                date: "1 August",
-                time: "Marathi | 11:00 AM – 1:00 PM IST",
-                link: "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header",
-              },
-            ].map((batch, i) => (
-              <div key={i} className="p-4 relative border rounded-lg shadow-sm bg-white overflow-hidden">
-                
+            {batches.length === 0 ? (
+              <p className="text-center text-gray-500 p-4">No batches available</p>
+            ) : (
+              batches.map((batch, i) => (
+                <div
+                  key={batch._id || i}
+                  className="p-4 relative border rounded-lg shadow-sm bg-white overflow-hidden"
+                >
+                  {/* Mode badge */}
+                  <div className="mb-2 mt-4">
+                    <span
+                      className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                        batch.mode === "Online"
+                          ? "bg-green-100 text-green-600"
+                          : "bg-yellow-100 text-yellow-700"
+                      }`}
+                    >
+                      {batch.mode}
+                    </span>
+                  </div>
 
-                {/* Mode badge */}
-                <div className="mb-2 mt-4">
-                  <span
-                    className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                      batch.mode === "Online"
-                        ? "bg-green-100 text-green-600"
-                        : "bg-yellow-100 text-yellow-700"
-                    }`}
-                  >
-                    {batch.mode}
-                  </span>
+                  {/* Date and time info */}
+                  <p className="text-sm text-gray-800 font-medium mb-1">
+                    Date:{" "}
+                    <span className="font-normal">
+                      {new Date(batch.startDate).toLocaleDateString()}
+                    </span>
+                  </p>
+                  <p className="text-sm text-gray-800 mb-4">
+                    Time:{" "}
+                    <span className="font-normal">
+                      {batch.language} | {batch.time}
+                    </span>
+                  </p>
+
+                  {/* Register Button */}
+                  <div>
+                    <a
+                      href={batch.registerLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition w-full block text-center"
+                    >
+                      Register Now
+                    </a>
+                  </div>
                 </div>
-
-                {/* Date and time info */}
-                <p className="text-sm text-gray-800 font-medium mb-1">
-                  Date: <span className="font-normal">{batch.date}</span>
-                </p>
-                <p className="text-sm text-gray-800 mb-4">
-                  Time: <span className="font-normal">{batch.time}</span>
-                </p>
-
-                {/* Register Button */}
-                <div>
-                  <a
-                    href={batch.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition w-full block text-center"
-                  >
-                    Register Now
-                  </a>
-                </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
 
@@ -356,6 +346,7 @@ const LandingPage = () => {
     </div>
   </div>
 </section>
+
 
 
 
