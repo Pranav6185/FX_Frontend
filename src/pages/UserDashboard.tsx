@@ -8,13 +8,16 @@ import { Card, CardContent } from '../components/ui/card';
 import { useAuth } from '../contexts/AuthContext';
 import { Batch } from '../types/batch';
 import EnrollButton from '../components/EnrollButton';
+import { useToast } from '../hooks/use-toast';
 
 const UserDashboard = () => {
   const { user } = useAuth();
+  const { toast } = useToast(); // <-- Add toast hook
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedLevel, setSelectedLevel] = useState<string>('all');
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [batches, setBatches] = useState<Batch[]>([]);
+  const [enrolledBatchIds, setEnrolledBatchIds] = useState<string[]>([]); // Keep track dynamically
 
   // Fetch batches from backend
   useEffect(() => {
@@ -32,8 +35,6 @@ const UserDashboard = () => {
       .catch((err) => console.error('Error fetching batches:', err));
   }, []);
 
-  // Mock enrolled batch IDs (in real app, fetch user's enrolled batches)
-  const enrolledBatchIds = ['1', '2'];
   const enrolledBatches = batches.filter((batch) =>
     enrolledBatchIds.includes(batch.id)
   );
@@ -46,6 +47,16 @@ const UserDashboard = () => {
     const matchesStatus = selectedStatus === 'all' || batch.mode === selectedStatus;
     return matchesSearch && matchesLevel && matchesStatus;
   });
+
+  // Handle successful enrollment
+  const handleEnrollSuccess = (batchId: string, batchName: string) => {
+    setEnrolledBatchIds([...enrolledBatchIds, batchId]);
+    toast({
+      title: 'Enrolled Successfully!',
+      description: `You have enrolled in ${batchName}`,
+      variant: 'default', // can be 'default', 'success', 'error', 'warning' depending on your toast UI
+    });
+  };
 
   return (
     <div
@@ -70,18 +81,12 @@ const UserDashboard = () => {
                 Continue your trading education journey
               </p>
             </div>
-            {/* <Link to="/">
-              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                Home
-              </Button>
-            </Link> */}
           </div>
         </div>
       </div>
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-
         {/* Enrolled Courses */}
         {enrolledBatches.length > 0 && (
           <div className="mb-12">
@@ -132,17 +137,6 @@ const UserDashboard = () => {
               All Available Courses
             </h2>
             <div className="flex items-center space-x-4">
-              {/* Search */}
-              {/* <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                <input
-                  type="text"
-                  placeholder="Search courses..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 pr-4 py-2 bg-white/80 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div> */}
               {/* Language Filter */}
               <select
                 value={selectedLevel}
@@ -152,7 +146,6 @@ const UserDashboard = () => {
                 <option value="all">All Languages</option>
                 <option value="English">English</option>
                 <option value="Hindi">Hindi</option>
-                
               </select>
               {/* Mode Filter */}
               <select
@@ -188,9 +181,10 @@ const UserDashboard = () => {
                     Start Date: {new Date(batch.startDate).toLocaleDateString()}
                   </p>
                   <EnrollButton
-                    amount={batch.price}
                     batchId={batch.id}
                     batchName={batch.batchName}
+                    enrolledBatchIds={enrolledBatchIds}
+                    onEnrollSuccess={handleEnrollSuccess} // <-- Pass handler
                   />
                 </CardContent>
               </Card>

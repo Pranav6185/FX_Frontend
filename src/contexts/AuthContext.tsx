@@ -6,6 +6,7 @@ interface User {
   fullName: string;
   email: string;
   role: 'admin' | 'user';
+  enrolledBatches: string[];  
 }
 
 interface AuthContextType {
@@ -73,10 +74,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsLoading(true);
     try {
       const res = await axios.post(`${BASE_URL}/auth/register`, {
+        
         fullName: name,
         email,
         password,
         phone,
+       
         role: 'user', // default role
       });
 

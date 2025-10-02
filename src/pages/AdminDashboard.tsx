@@ -8,12 +8,19 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../hooks/use-toast';
 import { Batch } from '../types/batch';
+import * as XLSX from 'xlsx';
 
 type User = {
+  _id: string;
   fullName: string;
   email: string;
   phone: string;
   role: string;
+  aadhaarUrl?: string;
+  panUrl?: string;
+  createdAt?: string;
+  updatedAt?: string;
+  [key: string]: any; // ✅ allows extra fields dynamically
 };
 
 const AdminDashboard = () => {
@@ -143,6 +150,7 @@ const AdminDashboard = () => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setCurrentUsers(res.data);
+      console.log(res.data);
       setShowUsersModal(true);
     } catch (err) {
       console.error('Error fetching users:', err);
@@ -164,20 +172,48 @@ const AdminDashboard = () => {
     setIsEditModalOpen(true);
   };
 
+  const handleExportUsers = () => {
+    if (!currentUsers || currentUsers.length === 0) {
+      toast({ title: 'No Data', description: 'No registered users to export.' });
+      return;
+    }
+
+    // ✅ Dynamic export: use all fields except password
+    const data = currentUsers.map(user => {
+      const { password, __v, ...rest } = user; // remove sensitive/unnecessary fields
+      return rest;
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(data);
+
+    // Auto-size columns
+    const columnWidths = Object.keys(data[0]).map(key => ({
+      wch: Math.max(
+        key.length,
+        ...data.map(row => String(row[key] || '').length)
+      ) + 2,
+    }));
+    worksheet['!cols'] = columnWidths;
+
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Registered Users');
+    XLSX.writeFile(workbook, 'registered_users.xlsx');
+  };
+
   const filteredBatches = batches.filter(b =>
     b.batchName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="p-6 flex flex-col items-center min-h-screen bg-cover bg-center bg-no-repeat"
-    style={{
-      backgroundImage: "url('/admin1.png')",
-      backgroundAttachment: "fixed",
-      backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-    backgroundPosition: 'center center',
-    
-    }}>
+      style={{
+        backgroundImage: "url('/admin1.png')",
+        backgroundAttachment: "fixed",
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center center',
+      }}>
+      
       {/* Header */}
       <div className="flex justify-between items-center mb-6 w-full max-w-4xl">
         <h1 className="text-3xl font-bold text-gray-800">Admin Dashboard</h1>
@@ -259,57 +295,52 @@ const AdminDashboard = () => {
       {/* Batches List */}
       <div className="grid gap-6 w-full max-w-4xl">
         {filteredBatches.map(batch => (
-       <Card
-       key={batch.id}
-       className="bg-white/20 backdrop-blur-lg border border-white/30 shadow-xl rounded-xl transition-all duration-300"
-     >
-       <CardHeader className="flex justify-between p-4 rounded-t-xl border-b border-white/20 bg-white/10">
-         <div>
-           <CardTitle className="text-xl font-bold text-[#072134] tracking-tight">
-             {batch.batchName}
-           </CardTitle>
-           <p className="text-sm text-[#0d3e61] font-medium mt-1">{batch.description}</p>
-         </div>
-         <div className="flex space-x-2">
-           <Button
-             size="sm"
-             className="bg-[#135b8e]/20 border border-[#135b8e] text-[#135b8e] font-semibold hover:bg-[#135b8e]/30 transition"
-             onClick={() => handleViewUsers(batch.id)}
-           >
-             <Eye className="h-4 w-4" />
-           </Button>
-           <Button
-             size="sm"
-             className="bg-[#ffc736]/20 border border-[#ffc736] text-[#072134] font-semibold hover:bg-[#ffc736]/30 transition"
-             onClick={() => openEditModal(batch)}
-           >
-             <Edit className="h-4 w-4" />
-           </Button>
-           <Button
-             size="sm"
-             variant="destructive"
-             className="bg-[#d62839]/20 border border-[#d62839] text-[#d62839] font-semibold hover:bg-[#d62839]/30 transition"
-             onClick={() => handleDeleteBatch(batch.id)}
-           >
-             <Trash2 className="h-4 w-4" />
-           </Button>
-         </div>
-       </CardHeader>
-     
-       <CardContent className="p-4 text-sm text-[#072134] space-y-1 font-medium">
-         <p><span className="text-[#0d3e61] font-bold">Start:</span> {new Date(batch.startDate).toLocaleDateString()}</p>
-         <p><span className="text-[#0d3e61] font-bold">Duration:</span> {batch.duration}</p>
-         <p><span className="text-[#0d3e61] font-bold">Price:</span> ₹{batch.price}</p>
-         <p><span className="text-[#0d3e61] font-bold">Slots:</span> {(batch.registeredUsers?.length || 0)}/{batch.totalSlots}</p>
-         <p><span className="text-[#0d3e61] font-bold">Mode:</span> {batch.mode}</p>
-         <p><span className="text-[#0d3e61] font-bold">Language:</span> {batch.language}</p>
-       </CardContent>
-     </Card>
-     
-      
-       
-       
-       
+          <Card
+            key={batch.id}
+            className="bg-white/20 backdrop-blur-lg border border-white/30 shadow-xl rounded-xl transition-all duration-300"
+          >
+            <CardHeader className="flex justify-between p-4 rounded-t-xl border-b border-white/20 bg-white/10">
+              <div>
+                <CardTitle className="text-xl font-bold text-[#072134] tracking-tight">
+                  {batch.batchName}
+                </CardTitle>
+                <p className="text-sm text-[#0d3e61] font-medium mt-1">{batch.description}</p>
+              </div>
+              <div className="flex space-x-2">
+                <Button
+                  size="sm"
+                  className="bg-[#135b8e]/20 border border-[#135b8e] text-[#135b8e] font-semibold hover:bg-[#135b8e]/30 transition"
+                  onClick={() => handleViewUsers(batch.id)}
+                >
+                  <Eye className="h-4 w-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  className="bg-[#ffc736]/20 border border-[#ffc736] text-[#072134] font-semibold hover:bg-[#ffc736]/30 transition"
+                  onClick={() => openEditModal(batch)}
+                >
+                  <Edit className="h-4 w-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  className="bg-[#d62839]/20 border border-[#d62839] text-[#d62839] font-semibold hover:bg-[#d62839]/30 transition"
+                  onClick={() => handleDeleteBatch(batch.id)}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardHeader>
+
+            <CardContent className="p-4 text-sm text-[#072134] space-y-1 font-medium">
+              <p><span className="text-[#0d3e61] font-bold">Start:</span> {new Date(batch.startDate).toLocaleDateString()}</p>
+              <p><span className="text-[#0d3e61] font-bold">Duration:</span> {batch.duration}</p>
+              <p><span className="text-[#0d3e61] font-bold">Price:</span> ₹{batch.price}</p>
+              <p><span className="text-[#0d3e61] font-bold">Slots:</span> {(batch.registeredUsers?.length || 0)}/{batch.totalSlots}</p>
+              <p><span className="text-[#0d3e61] font-bold">Mode:</span> {batch.mode}</p>
+              <p><span className="text-[#0d3e61] font-bold">Language:</span> {batch.language}</p>
+            </CardContent>
+          </Card>
         ))}
       </div>
 
@@ -319,6 +350,17 @@ const AdminDashboard = () => {
           <DialogHeader>
             <DialogTitle>Registered Students</DialogTitle>
           </DialogHeader>
+
+          {/* ✅ Download Button */}
+          <div className="flex justify-end mb-4">
+            <Button
+              className="bg-green-600 hover:bg-green-700 text-white"
+              onClick={handleExportUsers}
+            >
+              Download Excel
+            </Button>
+          </div>
+
           <div className="space-y-2 max-h-96 overflow-y-auto">
             {currentUsers.length === 0 ? (
               <p>No students registered yet.</p>
@@ -329,6 +371,8 @@ const AdminDashboard = () => {
                   <p><strong>Email:</strong> {user.email}</p>
                   <p><strong>Phone:</strong> {user.phone}</p>
                   <p><strong>Role:</strong> {user.role}</p>
+                  {user.aadhaarUrl && <p><strong>Aadhaar:</strong> {user.aadhaarUrl}</p>}
+                  {user.panUrl && <p><strong>PAN:</strong> {user.panUrl}</p>}
                 </div>
               ))
             )}
