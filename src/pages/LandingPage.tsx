@@ -305,16 +305,15 @@ const LandingPage = () => {
                   </p>
 
                   {/* Register Button */}
+                  {/* Register Button */}
                   <div>
-                    <a
-                      href={batch.registerLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      to="/login"
                       className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition w-full block text-center"
                     >
-                      Register Now
-                    </a>
-                  </div>
+                    Register Now
+                    </Link>
+                </div>
                 </div>
               ))
             )}
