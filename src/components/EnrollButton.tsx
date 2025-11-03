@@ -68,6 +68,11 @@
       } finally {
         setLoading(false);
       }
+
+      // open google form
+      const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform?usp=header";
+      window.open(googleFormLink, "_blank");
+      
     };
 
     return (
