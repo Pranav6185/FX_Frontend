@@ -25,6 +25,12 @@ const LandingPage = () => {
     };
     fetchBatches();
   }, []);
+  
+  const formatDate = (date) => {
+  const d = new Date(date);
+  return d.toLocaleDateString('en-GB'); // dd/mm/yyyy
+};
+
   const galleryImages = [
     {
       id: 1,
@@ -247,18 +253,22 @@ const LandingPage = () => {
                         </span>
                       </td>
                       <td className="px-5 py-5 font-medium">
-                        {new Date(batch.startDate).toLocaleDateString()}
+                          {formatDate(batch.startDate)}
                       </td>
+
                       <td className="px-5 py-5">
                          {batch.description}
                       </td>
                       <td className="px-5 py-5 text-right">
-                      <Link
-                        to="/login"
-                        className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition whitespace-nowrap"
+                      <a
+                      href="https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition whitespace-nowrap"
                       >
-                        Register Now
-                      </Link>
+                      Register Now
+                      </a>
+
                       </td>
                     </tr>
                   ))
@@ -293,10 +303,11 @@ const LandingPage = () => {
                   {/* Date and time info */}
                   <p className="text-sm text-gray-800 font-medium mb-1">
                     Date:{" "}
-                    <span className="font-normal">
-                      {new Date(batch.startDate).toLocaleDateString()}
-                    </span>
+                      <span className="font-normal">
+                        {formatDate(batch.startDate)}
+                      </span>
                   </p>
+
                   <p className="text-sm text-gray-800 mb-4">
                     Time:{" "}
                     <span className="font-normal">
