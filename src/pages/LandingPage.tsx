@@ -307,12 +307,15 @@ const LandingPage = () => {
                   {/* Register Button */}
                   {/* Register Button */}
                   <div>
-                    <Link
-                      to="/login"
-                      className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition w-full block text-center"
+                    <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfxVYIstqh-TuQKcE4JUYJm8eBqTXLgftN1fQYN8MNRuqlN3w/viewform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-yellow-400 hover:bg-yellow-500 text-white text-sm font-bold px-5 py-2.5 rounded-full transition w-full block text-center"
                     >
                     Register Now
-                    </Link>
+                    </a>
+
                 </div>
                 </div>
               ))
